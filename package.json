@@ -1,0 +1,31 @@
+{
+  "name": "@djang0dev/bunnynet-storage-deployer",
+  "version": "0.0.1",
+  "description": "A github action to deploy a folder to bunny.net storage and purge the linked pull zone",
+  "main": "action-dist/index.js",
+  "dependencies": {
+    "@actions/core": "1.10.1",
+    "@effect/platform": "0.50.7",
+    "@effect/platform-node": "0.47.5",
+    "@effect/schema": "0.66.10",
+    "effect": "3.0.7",
+    "glob": "^10.3.12"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.7.1",
+    "@types/glob": "^8.1.0",
+    "@types/node": "20.12.7",
+    "tsup": "8.0.2",
+    "tsx": "4.7.3",
+    "typescript": "5.4.5"
+  },
+  "scripts": {
+    "biome-ci": "biome ci ./ --diagnostic-level error",
+    "biome-cw": "biome check --apply ./",
+    "typecheck": "tsc --build --pretty --verbose",
+    "check": "pnpm biome-ci && pnpm typecheck",
+    "build": "tsup"
+  },
+  "keywords": ["bunnycdn", "bunny", "bunnet.net", "storage deployer"],
+  "author": "Kinane <kinane@djang0.dev>"
+}

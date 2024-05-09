@@ -1,0 +1,38 @@
+name: 'pipeline'
+on:
+  push:
+    branches:
+      - 'main'
+  pull_request:
+jobs:
+  ci:
+    name: 'ci'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+      - run: npm install -g pnpm
+      - run: pnpm install
+      - run: pnpm run check
+  action:
+    name: 'action'
+    runs-on: "ubuntu-latest"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+      - run: npm install -g pnpm
+      - run: pnpm install
+      - run: pnpm run build
+      - uses: ./ # self
+        with:
+          upload: true
+          remove: true
+          storageName: ${{ secrets.BUNNY_STORAGE_NAME }}
+          storageEndpoint: "storage.bunnycdn.com"
+          storagePassword: ${{ secrets.BUNNY_STORAGE_PASSWORD }}
+          destination: "test/"
+          sourcePattern: "./e2e/test-dir/**/*.*"
+          apiKey: ${{ secrets.BUNNY_API_KEY }}
+          purgePullZone: true
+          pullZoneId: ${{ secrets.BUNNY_PULL_ZONE_ID }}
+          verbose: true

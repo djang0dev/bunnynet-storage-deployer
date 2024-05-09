@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "module": "NodeNext",
+    "moduleResolution": "nodenext",
+    "noEmit": true,
+    "verbatimModuleSyntax": false,
+    "strict": true,
+    "composite": false,
+    "emitDeclarationOnly": false,
+    "incremental": true,
+    "noEmitOnError": true,
+    "skipLibCheck": true,
+    "allowUnusedLabels": false,
+    "allowUnreachableCode": false,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "target": "ESNext",
+    "checkJs": true,
+    "strictNullChecks": true,
+    "tsBuildInfoFile": "./tsbuild/.tsbuildinfo"
+  },
+  "exclude": ["**/node_modules/**/*", ".changeset", ".github", "dist", "action-dist"]
+}
