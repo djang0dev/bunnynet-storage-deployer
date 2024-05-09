@@ -64,7 +64,7 @@ export class BunnyConfig extends Effect.Tag("BunnyConfig")<
           .getOptionalInput({ inputId: "apiKey" })
           .pipe(Effect.andThen(Option.getOrThrow)),
         verbose: yield* actionGh
-          .getOptionalInput({ inputId: "verbose" })
+          .getCoercedBool({ inputId: "verbose" })
           .pipe(Effect.andThen(Option.getOrElse(() => false))),
       } as const
       const decoded = yield* S.decodeUnknown(DeployerActionInput, {
